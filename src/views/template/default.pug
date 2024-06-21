@@ -1,0 +1,31 @@
+- var navItems = ['Top', 'Services', 'About Us', 'Contact']
+
+doctype html
+html(lang='en')
+  head
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title Foo Company
+    link(rel="stylesheet" href="/styles/style.css")
+    link(rel="stylesheet" href="/styles/globe.css")
+    link(rel="stylesheet" href="/styles/sparkText.css")
+    link(rel="stylesheet" href="/styles/inlineGrid.css")
+  body
+    header(class='fixed top-0 left-0 z-10 flex items-center justify-between w-full px-2 bg-gray-100/10 backdrop-blur-sm')
+      a.font-bold(href="#") Foo Company
+      nav
+        ul.flex.justify-end
+          each item in navItems
+            li
+              a.block.p-4(href="#")= item
+    main
+      block content
+    footer.w-full.bg-slate-900.text-white
+      .container.flex.justify-between.items-center.mb-6
+        a.font-bold(href="#") Foo Company
+         nav
+          ul.flex.justify-end
+            each item in navItems
+             li
+               a.block.p-4(href="#")= item
+      small.block.text-center Copyright © 2023 Foo Company
+    script(src='/js/sparkText.js')

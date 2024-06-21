@@ -1,0 +1,43 @@
+.grid {
+
+  /* Locally scoped variables */
+  --gap: 2rem;
+  --line-offset: calc(var(--gap) / 2);
+  --line-thickness: 1px;
+  --line-color: rgba(129, 129, 129, 0.589);
+
+  /* Grid layout (Can be anything) */
+   display: grid;
+   grid-template-columns: repeat(3, minmax(0, 1fr));
+   overflow: hidden;
+   gap: var(--gap);
+}
+
+/* // Make Grid Items Control Absolute Pseudo Positioning */
+.grid__item {
+   position: relative;
+}
+
+/* // Pseudo Element Shared Styling */
+.grid__item::before,
+.grid__item::after {
+   content: '';
+   position: absolute;
+   background-color: var(--line-color);
+   z-index: 1;
+}
+
+/* // Row Borders */
+.grid__item::after {
+  inline-size: 100vw;
+  block-size: var(--line-thickness);
+  inset-inline-start: 0;
+  inset-block-start: calc(var(--line-offset) * -1);
+}
+
+/* // Column Borders */
+.grid__item::before {
+  inline-size: var(--line-thickness);
+  block-size: 100vh;
+  inset-inline-start: calc(var(--line-offset) * -1);
+}

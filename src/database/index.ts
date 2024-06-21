@@ -1,10 +1,11 @@
-import { DB_DATABASE, DB_HOST, DB_PORT, NODE_ENV } from '@config';
+import { DB_DATABASE, DB_URI, NODE_ENV } from '@config';
 import { ConnectOptions, connect, set } from 'mongoose';
 
 export const dbConnection = async () => {
   const dbConfig = {
-    url: `mongodb://${DB_HOST}:${DB_PORT}/${DB_DATABASE}`,
+    url: `${DB_URI}`,
     options: {
+      dbName: DB_DATABASE,
       useNewUrlParser: true,
       useUnifiedTopology: true,
     } as ConnectOptions,

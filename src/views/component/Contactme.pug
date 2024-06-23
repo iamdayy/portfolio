@@ -1,16 +1,14 @@
 div(class='w-full text-gray-200 bg-slate-900')
-  form.w-full.p-4.rounded.shadow-md(action='/submit-comment' method='post')
-    h2.text-xl.mb-4.tracking-wider.font-lighter.text-gray-900(class='dark:text-gray-200') Leave a Comment
-    p.text-gray-600.mb-4 Your email address will not be published. Required fields are marked *
+  form.w-full.p-12.rounded.shadow-md(action='/message' method='post')
+    h2.text-xl.mb-4.tracking-wider.font-lighter.text-gray-900(class='dark:text-gray-200') Contact Me
+    p.text-gray-600.mb-4 Leave your contact information for me to contact you further
     .grid.grid-cols-1.gap-3(class='md:grid-cols-3')
+      .mb-4
+        input#name.w-full.px-3.py-2.rounded-sm.border.border-gray-300.border-solid(type='text' name='name' class='bg-gray-700 dark:border-none focus:outline-none focus:border-dashed' placeholder='Name*' required='')
+      .mb-4
+        input#email.w-full.px-3.py-2.rounded-sm.border.border-gray-300.border-solid(type='email' name='email' class='bg-gray-700 dark:border-none focus:outline-none focus:border-dashed' placeholder='Email*' required='')
       .mb-4.col-span-1(class='md:col-span-3')
-        textarea#comment.w-full.px-3.py-2.rounded-sm.border.border-gray-300.border-solid.resize-none(name='comment' class='bg-gray-700  dark:border-none focus:outline-none focus:border-dashed' placeholder='Type Comment...*' rows='5' required='')
-      .mb-4
-        input#name.w-full.px-3.py-2.rounded-sm.border.border-gray-300.border-solid(type='text' name='name' class='bg-gray-700  dark:border-none focus:outline-none focus:border-dashed' placeholder='Name*' required='')
-      .mb-4
-        input#email.w-full.px-3.py-2.rounded-sm.border.border-gray-300.border-solid(type='email' name='email' class='bg-gray-700  dark:border-none focus:outline-none focus:border-dashed' placeholder='Email*' required='')
-      .mb-4
-        input#website.w-full.px-3.py-2.rounded-sm.border.border-gray-300.border-solid(type='text' name='website' class='bg-gray-700  dark:border-none focus:outline-none focus:border-dashed' placeholder='Website')
+        textarea#message.w-full.px-3.py-2.rounded-sm.border.border-gray-300.border-solid.resize-none(name='message' class='bg-gray-700 dark:border-none focus:outline-none focus:border-dashed' placeholder='Type message...*' rows='5' required='')
     .flex.justify-end
       button.py-4.px-6.bg-blue-950.text-white.rounded-sm(type='submit' class='hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-800')
-        | Post Comment &rarr;
+        | Post message &rarr;

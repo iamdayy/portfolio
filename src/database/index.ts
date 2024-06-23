@@ -3,10 +3,9 @@ import { ConnectOptions, connect, set } from 'mongoose';
 
 export const dbConnection = async () => {
   const dbConfig = {
-    url: `${DB_URI}`,
+    url: DB_URI,
     options: {
       dbName: DB_DATABASE,
-      useNewUrlParser: true,
       useUnifiedTopology: true,
     } as ConnectOptions,
   };

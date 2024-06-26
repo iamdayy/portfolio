@@ -1,4 +1,4 @@
-- var navItems = ['Top', 'Services', 'About Us', 'Contact']
+- var navItems = [{"title": "Top","uri": "/",},{"title": "About Me","uri": "#aboutme",},{"title": "My Projects","uri": "#myprojects"},{"title": "Top","uri": "/",}];
 
 doctype html
 html(lang='en')
@@ -11,21 +11,23 @@ html(lang='en')
     link(rel="stylesheet" href="/styles/inlineGrid.css")
   body
     header(class='fixed top-0 left-0 z-10 flex items-center justify-between w-full px-2 bg-gray-100/10 backdrop-blur-sm')
-      a.font-bold(href="#") Foo Company
+      a.font-bold(href="/") Iamdayy
       nav
         ul.flex.justify-end
           each item in navItems
             li
-              a.block.p-4(href="#")= item
+              a.block.p-4.font-semibold(href=item.uri)= item.title
     main
       block content
     footer.w-full.bg-slate-900.text-white
-      .container.flex.justify-between.items-center.mb-6
-        a.font-bold(href="#") Foo Company
+      .container.flex.justify-between.items-center.mb-6.px-4
+        a.font-bold(href="/") Iamdayy
          nav
           ul.flex.justify-end
             each item in navItems
              li
-               a.block.p-4(href="#")= item
-      small.block.text-center Copyright © 2023 Foo Company
+               a.block.p-4(href=item.uri)= item.title
+      small.block.text-center Copyright © 2023 Iamdayy
     script(src='/js/sparkText.js')
+    script(src='/js/dragdrop.js')
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js")

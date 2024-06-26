@@ -61,6 +61,16 @@ export class App {
     this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }));
     this.app.use(hpp());
     this.app.use(helmet());
+    this.app.use(
+      helmet.contentSecurityPolicy({
+        useDefaults: true,
+        directives: {
+          'script-src': ["'self'", 'https://cdnjs.cloudflare.com'],
+          // allowing styles from any website
+          'style-src': null,
+        },
+      }),
+    );
     this.app.use(compression());
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));

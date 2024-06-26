@@ -14,7 +14,7 @@
     "lint:fix": "npm run lint -- --fix",
     "deploy:prod": "npm run build && pm2 start ecosystem.config.js --only prod",
     "deploy:dev": "pm2 start ecosystem.config.js --only dev",
-  "tailwind:css": "postcss src/assets/styles/tailwind.css -o src/assets/styles/style.css"
+    "tailwind:css": "postcss src/assets/styles/tailwind.css -o src/assets/styles/style.css"
   },
   "dependencies": {
     "autoprefixer": "^10.4.19",

@@ -1,10 +1,13 @@
-import { DB_DATABASE, DB_URI, NODE_ENV } from '@config';
+import { DB_DATABASE, DB_PASSWORD, DB_URI, DB_USERNAME, NODE_ENV } from '@config';
 import { ConnectOptions, connect, set } from 'mongoose';
 
 export const dbConnection = async () => {
   const dbConfig = {
     url: DB_URI,
     options: {
+      user: DB_USERNAME,
+      pass: DB_PASSWORD,
+      authSource: DB_DATABASE,
       dbName: DB_DATABASE,
       useUnifiedTopology: true,
     } as ConnectOptions,

@@ -2,7 +2,6 @@ import { HttpException } from '@exceptions/httpException';
 import { Project } from '@interfaces/projects.interface';
 import { ProjectModel } from '@models/projects.model';
 import { Service } from 'typedi';
-
 @Service()
 export class ProjectService {
   public async findAllProject(): Promise<Project[]> {
@@ -28,7 +27,7 @@ export class ProjectService {
 
   public async updateProject(projectId: string, projectData: Project): Promise<Project> {
     if (projectData.uri) {
-      const findProject: Project = await ProjectModel.findOne({ uri: projectData.uri });
+      const findProject: Project = await ProjectModel.findById(projectId);
       if (findProject && findProject._id != projectId) throw new HttpException(409, `This Project ${projectData.title} already exists`);
     }
 

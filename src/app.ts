@@ -9,12 +9,12 @@ import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 import hpp from 'hpp';
+import methodOverride from 'method-override';
 import morgan from 'morgan';
 import path from 'path';
 import 'reflect-metadata';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-
 export class App {
   public app: express.Application;
   public env: string;
@@ -58,6 +58,7 @@ export class App {
 
   private initializeMiddlewares() {
     this.app.use(morgan(LOG_FORMAT, { stream }));
+    this.app.use(methodOverride('_method'));
     this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }));
     this.app.use(hpp());
     this.app.use(helmet());

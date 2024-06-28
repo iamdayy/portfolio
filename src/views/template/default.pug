@@ -1,4 +1,4 @@
-- var navItems = [{"title": "Top","uri": "/",},{"title": "About Me","uri": "#aboutme",},{"title": "My Projects","uri": "#myprojects"},{"title": "Top","uri": "/",}];
+- var navItems = [{"title": "Top","uri": "#Top",},{"title": "About Me","uri": "#About",},{"title": "My Projects","uri": "#Projects"},{"title": "Contact Me","uri": "#Contact",}];
 
 doctype html
 html(lang='en')
@@ -9,6 +9,7 @@ html(lang='en')
     link(rel="stylesheet" href="/styles/globe.css")
     link(rel="stylesheet" href="/styles/sparkText.css")
     link(rel="stylesheet" href="/styles/inlineGrid.css")
+    link(rel="stylesheet" href="/styles/my-style.css")
   body
     header(class='fixed top-0 left-0 z-10 flex items-center justify-between w-full px-2 bg-gray-100/10 backdrop-blur-sm')
       a.font-bold(href="/") Iamdayy
@@ -27,7 +28,7 @@ html(lang='en')
             each item in navItems
              li
                a.block.p-4(href=item.uri)= item.title
-      small.block.text-center Copyright © 2023 Iamdayy
+      small.block.text-center Copyright © 2024 Iamdayy
     script(src='/js/sparkText.js')
     script(src='/js/dragdrop.js')
     script(src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js")

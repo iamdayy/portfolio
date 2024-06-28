@@ -5,7 +5,7 @@ import { User } from '@interfaces/users.interface';
 import { UserModel } from '@models/users.model';
 import { compare, hash } from 'bcrypt';
 import { Request } from 'express';
-import { sign } from 'jsonwebtoken';
+import { sign, verify } from 'jsonwebtoken';
 import { Service } from 'typedi';
 
 const createToken = (user: User): TokenData => {
@@ -33,7 +33,7 @@ export class AuthService {
 
   public async login(userData: User): Promise<{ cookie: string; findUser: User }> {
     const findUser: User = await UserModel.findOne({ username: userData.username });
-    if (!findUser) throw new HttpException(409, `This username ${userData.email} was not found`);
+    if (!findUser) throw new HttpException(409, `This username ${userData.username} was not found`);
 
     const isPasswordMatching: boolean = await compare(userData.password, findUser.password);
     if (!isPasswordMatching) throw new HttpException(409, 'Password is not matching');
@@ -45,8 +45,16 @@ export class AuthService {
   }
 
   public async isAuthenticated(req: Request) {
-    const token = req.headers.cookie.split('; ');
-    console.log(token);
+    const token = req.cookies['Authorization'];
+    if (!token) {
+      return false;
+    }
+    const { _id } = verify(token, SECRET_KEY) as DataStoredInToken;
+    const user = UserModel.findById(_id);
+    if (!user) {
+      return false;
+    }
+    return user;
   }
 
   public async logout(userData: User): Promise<User> {

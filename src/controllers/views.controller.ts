@@ -1,5 +1,5 @@
 import { AuthService } from '@/services/auth.service';
-import { MessageService } from '@/services/message.service';
+import { MessageService } from '@/services/messages.service';
 import { ProjectService } from '@/services/projects.service';
 import { NextFunction, Request, Response } from 'express';
 
